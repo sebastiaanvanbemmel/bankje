@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DocType name="GeoDmsMetaInfo">
+<DefaultInfo>
+	<FullName>/Desktops/Default/Exports/ExportTable1/geometry
+	</FullName>
+	<GeoDmsVersion>GeoDms 14.8.0 [Jan  4 2024 15:42:20]
+	</GeoDmsVersion>
+	<SessionStartTime>2024-02-10 14:52:00
+	</SessionStartTime>
+	<CurrentTime>2024-02-10 15:05:52
+	</CurrentTime>
+	<StatusFlags>0x25f7 = AdminMode SuspendForGUI ShowStateColors TreeViewVisible DetailsVisible EventLogVisible ToolBarVisible MultiThreading1 MultiThreading2 
+	</StatusFlags>
+</DefaultInfo>
+<Software>
+	<GeoDmsVersion>14.08
+	</GeoDmsVersion>
+</Software>
+<Config>
+	<FullName>/Desktops/Default/Exports/ExportTable1/geometry
+	</FullName>
+	<Expr>/SourceData/Grondgebruik/BGT/bank/geometry
+	</Expr>
+</Config>
+<Environment>
+	<Processor>Intel64 Family 6 Model 106 Stepping 6, GenuineIntel
+	</Processor>
+	<User>bemmelvb
+	</User>
+	<ComputerName>geodms-p-0
+	</ComputerName>
+</Environment>
+<Svn>
+	<RevisionInfo>SubWCRev: &apos;k:\PD\planmonitor2024&apos;<BR/>
+		Last committed at revision 10551<BR/>
+		Updated to revision 10553<BR/>
+		Local modifications found<BR/>
+		
+	</RevisionInfo>
+</Svn>
+</DocType>
