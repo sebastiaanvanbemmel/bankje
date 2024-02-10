@@ -1,0 +1,35 @@
+container BGT
+{
+	//https://app.pdok.nl/lv/bgt/download-viewer/ , Deel NL, citygml, Met plaatsbepalingspunten 
+	//bgt_straatmeubilair.gml --> QGIS --> bgt_straatmeubilair.gpkg
+
+	unit<Float32> Meter := BaseUnit('m', float32);//https://github.com/ObjectVision/GeoDMS/wiki/BaseUnit
+	
+	parameter<Meter> x_min := 0[Meter];
+	parameter<Meter> x_max := 280000[Meter];
+	parameter<Meter> y_min := 300000[Meter];
+	parameter<Meter> y_max := 625000[Meter];
+
+	unit<fpoint> rdc_meter_base : SpatialReference = "EPSG:28992";//https://github.com/ObjectVision/GeoDMS/wiki/SpatialReference
+	unit<fpoint> rdc_meter      := range(rdc_meter_base, point(y_min, x_min), point(y_max, x_max));//https://github.com/ObjectVision/GeoDMS/wiki/range
+
+	unit<uint32> bgt_straatmeubilair
+	:	StorageName     = "K:/BGT/bgt_straatmeubilair.gpkg"
+	,	StorageType     = "gdal.vect"
+	,	StorageReadOnly = "True"
+	, 	DialogData      = "rdc_meter"
+	, 	SyncMode        = "AllTables"
+	//,	SqlString       = "SELECT * FROM bgt_straatmeubilair WHERE plus_type == 'bank'"
+	{
+	}
+	
+	//bij 0,0
+	//141113;{0, 0};'b7ace0a16-6f90-0d7d-309e-ebf58669ec31'
+	//141114;{0, 0};'b82386a1b-4a13-da0d-2806-9c8b98fd413b'
+
+	//https://github.com/ObjectVision/GeoDMS/wiki/select_with_attr_by_cond
+	unit<uint32> bank             := select_with_attr_by_cond(bgt_straatmeubilair, bgt_straatmeubilair/plus_type = 'bank' && (bgt_straatmeubilair/gml_id <> 'b7ace0a16-6f90-0d7d-309e-ebf58669ec31') && (bgt_straatmeubilair/gml_id <> 'b82386a1b-4a13-da0d-2806-9c8b98fd413b'));
+	unit<uint32> picknicktafel    := select_with_attr_by_cond(bgt_straatmeubilair, bgt_straatmeubilair/plus_type = 'picknicktafel');
+	unit<uint32> openbaartoilet   := select_with_attr_by_cond(bgt_straatmeubilair, bgt_straatmeubilair/plus_type = 'openbaar toilet');
+	unit<uint32> speelvoorziening := select_with_attr_by_cond(bgt_straatmeubilair, bgt_straatmeubilair/plus_type = 'speelvoorziening');
+}
